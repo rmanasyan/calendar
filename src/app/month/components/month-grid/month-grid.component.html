@@ -1,0 +1,21 @@
+<div class="flex h-full flex-col">
+  <section class="grid grid-cols-7 gap-px border-y border-zinc-200 bg-zinc-200">
+    <div class="bg-zinc-50 p-3 text-zinc-600" *ngFor="let weekDay of weekDays">
+      {{ weekDay }}
+    </div>
+  </section>
+
+  <section class="grid grow grid-cols-7 gap-px bg-zinc-200">
+    <div class="bg-white" *ngFor="let day of monthDays$ | async">
+      <a
+        [routerLink]="'/day/' + (day.date | date: 'yyyy-MM-dd')"
+        class="block h-full p-3 transition hover:bg-zinc-50"
+        [class.text-zinc-400]="!day.isCurrentMonth"
+        [class.bg-pink-100]="day.isCurrentDate"
+      >
+        {{ day.day }}
+        <span *ngIf="day.day === 1">{{ day.date | date: 'MMM' }}</span>
+      </a>
+    </div>
+  </section>
+</div>
