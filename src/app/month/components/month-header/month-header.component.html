@@ -1,5 +1,9 @@
 <header class="flex gap-2 bg-zinc-100 p-3">
-  <h1 class="grow text-2xl font-black">{{ currentMonth$ | async | date: 'MMMM yyyy' }}</h1>
+  <h1 class="grow text-2xl font-black">
+    <time [dateTime]="currentMonth$ | async | date: 'yyyy-MM'">
+      {{ currentMonth$ | async | date: 'MMMM yyyy' }}
+    </time>
+  </h1>
 
   <a [routerLink]="'/month/' + (prevMonth | date: 'yyyy-MM')" appButton>‹</a>
   <a [routerLink]="today | date: 'yyyy-MM'" appButton>Today</a>
