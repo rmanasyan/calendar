@@ -1,0 +1,12 @@
+<ol class="flex flex-col gap-5 p-5">
+  <li *ngFor="let _ of events">
+    <a
+      routerLink="/event"
+      class="flex flex-col rounded-md border border-zinc-100 bg-zinc-50 p-3 text-sm transition hover:border-zinc-200"
+    >
+      <p class="text-zinc-600">09:00</p>
+      <p class="font-bold">New Event</p>
+      <p class="mt-2">Google Meet</p>
+    </a>
+  </li>
+</ol>

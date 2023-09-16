@@ -4,7 +4,6 @@ import { MonthHeaderComponent } from './components/month-header/month-header.com
 import { MonthGridComponent } from './components/month-grid/month-grid.component';
 
 @Component({
-  selector: 'app-month',
   standalone: true,
   imports: [CommonModule, MonthHeaderComponent, MonthGridComponent],
   templateUrl: './month.component.html',
