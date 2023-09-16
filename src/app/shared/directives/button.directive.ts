@@ -11,7 +11,7 @@ const buttonVariants = cva(
         primary: 'bg-zinc-800 text-zinc-50 hover:bg-zinc-600',
       },
       size: {
-        default: 'py-1 px-3',
+        default: 'h-8 py-1 px-3',
         icon: 'h-10 w-10',
       },
     },

@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { DayEventsComponent } from '../day/components/day-events/day-events.component';
 import { DayHeaderComponent } from '../day/components/day-header/day-header.component';
 import { EventHeaderComponent } from './components/event-header/event-header.component';
-import { EventFormComponent } from './components/event-form/event-form.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, DayEventsComponent, DayHeaderComponent, EventHeaderComponent, EventFormComponent],
+  imports: [CommonModule, DayEventsComponent, DayHeaderComponent, EventHeaderComponent, EventEditComponent],
   templateUrl: './event.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
