@@ -1,12 +1,28 @@
-<ol class="flex flex-col gap-5 p-5">
-  <li *ngFor="let _ of events">
-    <a
-      routerLink="/event"
-      class="flex flex-col rounded-md border border-zinc-100 bg-zinc-50 p-3 text-sm transition hover:border-zinc-200"
-    >
-      <p class="text-zinc-600">09:00</p>
-      <p class="font-bold">New Event</p>
-      <p class="mt-2">Google Meet</p>
-    </a>
-  </li>
-</ol>
+<section class="h-full p-5">
+  <ng-container *ngIf="dayEvents$ | async as dayEvents; else loading">
+    <ol class="flex flex-col gap-5" *ngIf="dayEvents.length; else noEvents">
+      <li *ngFor="let event of dayEvents; trackByProperty: 'id'">
+        <a
+          [routerLink]="'/event/' + event.id"
+          class="flex flex-col rounded-md border border-zinc-100 bg-zinc-50 p-3 text-sm transition hover:border-zinc-200"
+        >
+          <p class="text-zinc-600">{{ event.startDate | date: 'HH:mm' }} - {{ event.endDate | date: 'HH:mm' }}</p>
+          <p class="font-bold">{{ event.title }}</p>
+          <p class="mt-2">{{ event.location }}</p>
+        </a>
+      </li>
+    </ol>
+
+    <ng-template #noEvents>
+      <div class="grid h-full place-items-center text-xl font-bold text-zinc-600">
+        <p>No events on this day</p>
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="grid h-full place-items-center text-zinc-600">
+      <p>Loading...</p>
+    </div>
+  </ng-template>
+</section>

@@ -7,3 +7,11 @@ export function isValidDayString(value: string = '') {
 
   return isValidString && isValidDate;
 }
+
+export function getCurrentDayStart(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+export function getNextDayStart(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+}
