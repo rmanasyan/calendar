@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventFormComponent } from '../event-form/event-form.component';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-event-edit',
@@ -9,4 +10,6 @@ import { EventFormComponent } from '../event-form/event-form.component';
   templateUrl: './event-edit.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventEditComponent {}
+export class EventEditComponent {
+  event$ = inject(EventService).event$;
+}

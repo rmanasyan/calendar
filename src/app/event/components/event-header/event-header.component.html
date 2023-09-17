@@ -1,5 +1,5 @@
 <header class="flex gap-2 border-b border-zinc-200 bg-zinc-100 p-3">
-  <h1 class="grow text-2xl font-black">New Event</h1>
+  <h1 class="grow text-2xl font-black">{{ (event$ | async)?.title || 'New Event' }}</h1>
 
   <a routerLink="/" appButton>Month</a>
 </header>

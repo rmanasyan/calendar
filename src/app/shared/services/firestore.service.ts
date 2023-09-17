@@ -29,7 +29,7 @@ export class FirestoreService {
     });
   }
 
-  selectDoc<T>(path: string): Observable<T | undefined> {
+  selectDoc<T>(path: string): Observable<T> {
     return docData<T>(doc(this.firestore, path) as DocumentReference<T>, { idField: 'id' });
   }
 

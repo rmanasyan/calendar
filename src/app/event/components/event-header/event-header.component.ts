@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonDirective } from '../../../shared/directives/button.directive';
 import { RouterLink } from '@angular/router';
+import { ButtonDirective } from '../../../shared/directives/button.directive';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-event-header',
@@ -10,4 +11,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './event-header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventHeaderComponent {}
+export class EventHeaderComponent {
+  event$ = inject(EventService).event$;
+}

@@ -23,6 +23,10 @@ export const routes: Routes = [
     loadComponent: () => import('./event/event.component'),
   },
   {
+    path: 'event/:id',
+    loadComponent: () => import('./event/event.component'),
+  },
+  {
     path: '**',
     redirectTo: '',
   },
