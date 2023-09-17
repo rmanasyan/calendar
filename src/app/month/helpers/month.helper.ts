@@ -1,3 +1,5 @@
+import { MonthDay } from '../models/month.model';
+
 export function getWeekDayNames(): ReadonlyArray<string> {
   return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 }
@@ -11,13 +13,6 @@ export function isValidMonthString(value: string = '') {
 
   return isValidString && isValidDate;
 }
-
-export type MonthDay = {
-  day: number;
-  date: Date;
-  isCurrentMonth: boolean;
-  isCurrentDate?: boolean;
-};
 
 export function getMonthDays(year: number, month: number) {
   const now = new Date();
@@ -57,7 +52,10 @@ export function getMonthDays(year: number, month: number) {
     });
   }
 
-  for (let i = 1; i <= endDay; i++) {
+  // make grid fixed size 7 day x 6 weeks (rows)
+  const restDays = 42 - monthDays.length;
+
+  for (let i = 1; i <= restDays; i++) {
     monthDays.push({
       day: i,
       date: new Date(nextMonth === 0 ? year + 1 : year, nextMonth, i),

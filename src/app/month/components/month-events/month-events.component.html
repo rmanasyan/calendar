@@ -1,0 +1,6 @@
+<ol class="max-h-12 overflow-y-scroll">
+  <li *ngFor="let event of events" class="flex justify-between gap-1 text-xs">
+    <p class="truncate">{{ event.title }}</p>
+    <time class="text-zinc-400">{{ event.startDate | date: 'HH:mm' }}</time>
+  </li>
+</ol>

@@ -5,7 +5,7 @@
     </div>
   </section>
 
-  <section class="grid grow grid-cols-7 gap-px bg-zinc-200">
+  <section class="grid grow grid-cols-7 grid-rows-6 gap-px bg-zinc-200">
     <div class="bg-white" *ngFor="let day of monthDays$ | async; trackByProperty: 'day'">
       <a
         [routerLink]="'/day/' + (day.date | date: 'yyyy-MM-dd')"
@@ -17,6 +17,8 @@
           {{ day.day }}
           <ng-container *ngIf="day.day === 1">{{ day.date | date: 'MMM' }}</ng-container>
         </time>
+
+        <app-month-events *ngIf="day.events?.length" [events]="day.events?.slice(0, 3)" />
       </a>
     </div>
   </section>
