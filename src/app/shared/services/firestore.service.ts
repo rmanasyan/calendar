@@ -34,14 +34,14 @@ export class FirestoreService {
   }
 
   addDoc<T>(path: string, data: Partial<T>) {
-    addDoc<T>(collection(this.firestore, path) as CollectionReference<T>, data as WithFieldValue<T>);
+    return addDoc<T>(collection(this.firestore, path) as CollectionReference<T>, data as WithFieldValue<T>);
   }
 
   updateDoc<T>(path: string, data: Partial<T>) {
-    updateDoc<T>(doc(this.firestore, path) as DocumentReference<T>, data as UpdateData<T>);
+    return updateDoc<T>(doc(this.firestore, path) as DocumentReference<T>, data as UpdateData<T>);
   }
 
   deleteDoc(path: string) {
-    deleteDoc(doc(this.firestore, path));
+    return deleteDoc(doc(this.firestore, path));
   }
 }

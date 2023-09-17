@@ -1,6 +1,12 @@
-<div class="p-5">
-  <div class="rounded-md bg-zinc-50 p-3">
-    <h1>{{ (event$ | async)?.title }}</h1>
-    <app-event-form />
-  </div>
-</div>
+<section class="p-5">
+  <app-event-form
+    *ngIf="event$ | async as event; else newForm"
+    [data]="event"
+    (save)="updateEvent($event)"
+    (delete)="deleteEvent($event)"
+  />
+
+  <ng-template #newForm>
+    <app-event-form (save)="addEvent($event)" />
+  </ng-template>
+</section>

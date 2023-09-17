@@ -16,6 +16,18 @@ export class EventService {
     shareReplay({ refCount: true }),
   );
 
+  addEvent(data: Partial<CalendarEvent>) {
+    return this.firestoreService.addDoc('events', data);
+  }
+
+  updateEvent(id: CalendarEvent['id'], data: Partial<CalendarEvent>) {
+    return this.firestoreService.updateDoc(`events/${id}`, data);
+  }
+
+  deleteEvent(id: CalendarEvent['id']) {
+    return this.firestoreService.deleteDoc(`events/${id}`);
+  }
+
   private selectEvent(id: string): Observable<CalendarEvent> {
     return this.firestoreService.selectDoc<CalendarEventFirestore>(`events/${id}`).pipe(
       filter((data) => !!data),

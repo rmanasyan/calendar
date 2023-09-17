@@ -1,5 +1,57 @@
-<form>
-  <div>form</div>
+<form class="flex flex-col gap-5" [formGroup]="formGroup">
+  <fieldset>
+    <label for="title" class="block pb-1 font-bold">Title</label>
+    <input id="title" formControlName="title" type="text" placeholder="New event" appInput />
+  </fieldset>
 
-  <button appButton variant="primary">Save</button>
+  <fieldset>
+    <label for="location" class="block pb-1 font-bold">Location</label>
+    <input id="location" formControlName="location" type="text" placeholder="Add Location or Video Call" appInput />
+  </fieldset>
+
+  <fieldset>
+    <label for="startDate" class="block pb-1 font-bold">Start Time</label>
+    <input id="startDate" formControlName="startDate" type="datetime-local" appInput />
+  </fieldset>
+
+  <fieldset>
+    <label for="endDate" class="block pb-1 font-bold">
+      End Time
+
+      <span *ngIf="formGroup.errors?.['endDateError']" class="pl-2 text-sm font-normal text-pink-500">
+        (The start time must be before the end time)
+      </span>
+      <span
+        *ngIf="!formGroup.errors?.['endDateError'] && formGroup.errors?.['multiDayError']"
+        class="pl-2 text-sm font-normal text-pink-500"
+      >
+        (Multi Day events are not supported yet)
+      </span>
+    </label>
+    <input id="endDate" formControlName="endDate" type="datetime-local" appInput />
+  </fieldset>
+
+  <fieldset>
+    <label class="block pb-1 font-bold">Repeat</label>
+    <p class="text-sm text-zinc-600">* Recurrent events are not supported yet</p>
+  </fieldset>
+
+  <fieldset>
+    <label for="notes" class="block pb-1 font-bold">Notes</label>
+    <input id="notes" formControlName="notes" type="text" placeholder="Add Notes" appInput />
+  </fieldset>
+
+  <div class="flex justify-end gap-3 pt-5">
+    <button *ngIf="data?.id" (click)="deleteEvent()" appButton size="lg">Delete</button>
+
+    <button
+      (click)="saveEvent()"
+      [disabled]="formGroup.invalid || formGroup.pristine"
+      appButton
+      variant="primary"
+      size="lg"
+    >
+      Save
+    </button>
+  </div>
 </form>
