@@ -1,11 +1,12 @@
-<header class="flex gap-2 border-b border-zinc-200 bg-zinc-100 p-3">
+<header class="flex flex-col gap-2 border-b border-zinc-200 bg-zinc-100 p-3 sm:flex-row">
   <h1 class="grow text-2xl font-black">
     <time [dateTime]="currentDay$ | async | date: 'yyyy-MM-dd'">
       {{ currentDay$ | async | date: 'EEE, MMMM d, y' }}
     </time>
   </h1>
 
-  <a routerLink="/" appButton>Month</a>
-
-  <a routerLink="/event" appButton variant="primary" class="ml-5">New Event</a>
+  <div class="flex gap-2">
+    <a routerLink="/" appButton class="grow">Month</a>
+    <a routerLink="/event" appButton variant="primary">New Event</a>
+  </div>
 </header>

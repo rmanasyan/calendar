@@ -15,7 +15,7 @@
       >
         <time [dateTime]="day.date | date: 'yyyy-MM-dd'">
           {{ day.day }}
-          <ng-container *ngIf="day.day === 1">{{ day.date | date: 'MMM' }}</ng-container>
+          <span *ngIf="day.day === 1" class="sr-only sm:not-sr-only">{{ day.date | date: 'MMM' }}</span>
         </time>
 
         <app-month-events *ngIf="day.events?.length" [events]="day.events?.slice(0, 3)" />

@@ -7,7 +7,7 @@
           class="flex flex-col rounded-md border border-zinc-100 bg-zinc-50 p-3 text-sm transition hover:border-zinc-200"
         >
           <p class="text-zinc-600">{{ event.startDate | date: 'HH:mm' }} - {{ event.endDate | date: 'HH:mm' }}</p>
-          <p class="font-bold">{{ event.title }}</p>
+          <p class="truncate font-bold">{{ event.title }}</p>
           <p class="mt-2">{{ event.location }}</p>
         </a>
       </li>
